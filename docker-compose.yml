@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  LiberationLythium:
+    build: .
+    image: skreeet/arma:latest
+    platform: linux/amd64
+    container_name: lib1
+    networks:
+      arma-network:
+    ports:
+      - 0.0.0.0:2302:2302/udp
+      - 0.0.0.0:2303:2303/udp
+      - 0.0.0.0:2304:2304/udp
+      - 0.0.0.0:2305:2305/udp
+      - 0.0.0.0:2306:2306/udp
+    volumes:
+      - ./missions:/arma3/mpmissions
+      - ./lib1/configs:/arma3/configs
+      - ./lib1/mods:/arma3/mods
+      - workshop:/arma3/steamapps/workshop
+    env_file: .env
+    restart: unless-stopped
+
+volumes:
+  workshop:
+networks:
+  arma-network:
+    attachable: true
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: 'armanet'

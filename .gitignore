@@ -1,0 +1,9 @@
+.env
+configs/profiles/*
+mods/*
+armalythmods.html
+*@*
+*/configs/profiles/*
+server_console*.log
+main.cfg
+main_basic.cfg
