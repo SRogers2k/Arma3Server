@@ -65,7 +65,7 @@ EXPOSE 2306/udp
 
 STOPSIGNAL SIGINT
 
-RUN chmod +x /steamcmd2fa/target/debug/steamcmd-2fa
+RUN chmod +x /steamcmd2fa
 
 WORKDIR /arma3
 
