@@ -65,8 +65,6 @@ EXPOSE 2306/udp
 
 STOPSIGNAL SIGINT
 
-RUN chmod +x /steamcmd2fa
-
 WORKDIR /arma3
 
 CMD ["python3","/launch.py"]

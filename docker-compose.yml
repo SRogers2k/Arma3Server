@@ -2,7 +2,7 @@ version: '3.8'
 services:
   LiberationLythium:
     build: .
-    image: skreeet/arma:latest
+    image: ghcr.io/srogers2k/arma3serverdocker/arma3server:main
     platform: linux/amd64
     container_name: lib1
     networks:

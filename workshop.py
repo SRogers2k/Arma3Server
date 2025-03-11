@@ -26,30 +26,35 @@ def download(mods):
     subprocess.call(steamcmd)
 
     # Finally, prep mod directories and files by making them lowercase
-    # Workshop files to lowercase
+    # Workshop files to lowercase and remove spaces
 
-    tolowercase = "find /arma3/steamapps/workshop/content/107410 -depth -exec rename 'y/A-Z/a-z/' {} +"
-    subprocess.run(tolowercase, shell=True, check=True)
+    tolowercase = "find {moddirr} -depth -exec rename 'y/A-Z/a-z/' {} +"
+    removespaces = "find {moddirr} -type f -name '* *' -exec rename 's/ /_/g' {} +"
+    subprocess.run(tolowercase.format("/arma3/steamapps/workshop/content/107410"), shell=True, check=True)
+    subprocess.run(removespaces.format("/arma3/steamapps/workshop/content/107410"), shell=True, check=True)
+    subprocess.run(tolowercase.format("/arma3/mods"), shell=True, check=True)
+    subprocess.run(removespaces.format("/arma3/mods"), shell=True, check=True)
 
-    source_dir = '/arma3/steamapps/workshop/content/107410/724582108/@ctab/serverkey'
-    destination_dir = '/arma3/steamapps/workshop/content/107410/724582108/keys'
+    # ctab is popular but doesn't follow the normal key structure
+    source_ctab_dir = '/arma3/steamapps/workshop/content/107410/724582108/@ctab/serverkey'
+    destination_ctab_dir = '/arma3/steamapps/workshop/content/107410/724582108/keys'
     # Check if the source directory exists
-    if os.path.exists(source_dir):
+    if os.path.exists(source_ctab_dir):
         # Ensure the destination directory exists
-        if not os.path.exists(destination_dir):
-            os.makedirs(destination_dir)
+        if not os.path.exists(destination_ctab_dir):
+            os.makedirs(destination_ctab_dir)
 
         # Copy all files from the source directory to the destination
-        for file_name in os.listdir(source_dir):
-            source_file = os.path.join(source_dir, file_name)
-            destination_file = os.path.join(destination_dir, file_name)
+        for file_name in os.listdir(source_ctab_dir):
+            source_file = os.path.join(source_ctab_dir, file_name)
+            destination_file = os.path.join(destination_ctab_dir, file_name)
 
             if os.path.isfile(source_file):
                 shutil.copy2(source_file, destination_file)
 
-        print(f"Files from '{source_dir}' have been copied to '{destination_dir}'.")
+        print(f"Files from '{source_ctab_dir}' have been copied to '{destination_ctab_dir}'.")
     else:
-        print(f"Source directory '{source_dir}' does not exist.")
+        print(f"Source directory '{source_ctab_dir}' does not exist.")
 
 def preset(mod_file):
     if mod_file.startswith("http"):
