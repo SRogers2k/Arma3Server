@@ -32,8 +32,8 @@ def download(mods):
     removespaces = "find {moddirr} -type f -name '* *' -exec rename 's/ /_/g' {} +"
     subprocess.run(tolowercase.format("/arma3/steamapps/workshop/content/107410"), shell=True, check=True)
     subprocess.run(removespaces.format("/arma3/steamapps/workshop/content/107410"), shell=True, check=True)
-    subprocess.run(tolowercase.format("/arma3/mods"), shell=True, check=True)
-    subprocess.run(removespaces.format("/arma3/mods"), shell=True, check=True)
+    subprocess.run(tolowercase.format(moddirr = "/arma3/mods"), shell=True, check=True)
+    subprocess.run(removespaces.format(moddirr = "/arma3/mods"), shell=True, check=True)
 
     # ctab is popular but doesn't follow the normal key structure
     source_ctab_dir = '/arma3/steamapps/workshop/content/107410/724582108/@ctab/serverkey'

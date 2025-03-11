@@ -1,4 +1,4 @@
-# Arma 3 Dedicated Server in Docker with 2FA accounts
+# Arma 3 Dedicated Server in Docker with 2FA Steam accounts
 
 Forked from https://github.com/BrettMayson/Arma3Server
 
