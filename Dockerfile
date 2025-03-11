@@ -65,6 +65,8 @@ EXPOSE 2306/udp
 
 STOPSIGNAL SIGINT
 
+COPY *.py /
+
 WORKDIR /arma3
 
 CMD ["python3","/launch.py"]
