@@ -55,8 +55,6 @@ ENV STEAM_BRANCH_PASSWORD=
 ENV STEAM_ADDITIONAL_DEPOT=
 ENV MODS_LOCAL=true
 ENV MODS_PRESET=/armalythmods.html
-# ENV MODS_LOCAL=false
-# ENV MODS_PRESET=
 ENV SKIP_INSTALL=false
 
 EXPOSE 2302/udp
@@ -72,10 +70,6 @@ COPY armalythmods.html /
 COPY *.py /
 
 RUN chmod +x /steamcmd2fa/target/debug/steamcmd-2fa
-
-# Copy local mods and their keys
-# COPY mods /arma3/mods
-# COPY mods/*/keys/*.bikey /arma3/keys
 
 WORKDIR /arma3
 
