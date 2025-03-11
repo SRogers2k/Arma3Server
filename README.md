@@ -6,7 +6,7 @@ Forked from https://github.com/BrettMayson/Arma3Server
 
 Uses steamcmd-2fa https://github.com/WoozyMasta/steamcmd-2fa
 
-The directory structure aims to make creating multiple servers as easily and intuitively as possible.
+The directory structure aims to make creating multiple servers as easily as possible.
 
 ## Usage
 
