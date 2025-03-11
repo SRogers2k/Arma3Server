@@ -35,9 +35,9 @@ RUN apt-get update \
     && \
     rm -rf /var/lib/apt/lists/* \
     && \
-    wget -qO /steamcmd-2fa https://github.com/WoozyMasta/steamcmd-2fa/releases/download/0.2.1/steamcmd-2fa \
+    wget -qO /steamcmd2fa https://github.com/WoozyMasta/steamcmd-2fa/releases/download/0.2.1/steamcmd-2fa \
     && \
-    chmod +x /steamcmd-2fa
+    chmod +x /steamcmd2fa
 
 ENV ARMA_BINARY=./arma3server
 ENV ARMA_CONFIG=main.cfg
