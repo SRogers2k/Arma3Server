@@ -4,6 +4,10 @@ Forked from https://github.com/BrettMayson/Arma3Server
 
 Uses steamcmd-2fa https://github.com/WoozyMasta/steamcmd-2fa
 
+> [!IMPORTANT]
+> Please keep your seed/secret VERY safe as people with your seed can easily
+> bypass your 2FA by simply generating the Steam Guard codes themselves!
+
 This has been tested with local mods and workshop mods on a Liberation Server. All refereces to "lib" or "lib1" indicate this. Any references to "Lythium" are to the map used.
 
 The directory structure aims to make creating multiple servers as easily as possible.
