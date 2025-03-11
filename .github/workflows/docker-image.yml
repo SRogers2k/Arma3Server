@@ -1,18 +1,21 @@
-name: Docker Image CI
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-
+name: Publish Docker
+on: [push]
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
+      packages: write
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag arma3-docker:$(date +%s)
+    - uses: actions/checkout@master
+    - name: Convert repository name to lower case
+      run: echo IMAGE_REPOSITORY="$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_ENV"
+    - name: Publish to Registry
+      uses: docker/build-push-action@v1
+      with:
+        repository: ${{ env.IMAGE_REPOSITORY }}/arma3server
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: docker.pkg.github.com
+        tag_with_ref: true
+        push: true
