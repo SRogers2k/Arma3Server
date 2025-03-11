@@ -65,10 +65,6 @@ EXPOSE 2306/udp
 
 STOPSIGNAL SIGINT
 
-COPY steamcmd2fa /steamcmd2fa
-COPY armalythmods.html /
-COPY *.py /
-
 RUN chmod +x /steamcmd2fa/target/debug/steamcmd-2fa
 
 WORKDIR /arma3
