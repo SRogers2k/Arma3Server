@@ -1,9 +1,8 @@
 .env
-configs/profiles/*
+*/configs/profiles/*
+*/configs/mainlib.cfg
+main_basic.cfg
 mods/*
 armalythmods.html
 *@*
-*/configs/profiles/*
 server_console*.log
-main.cfg
-main_basic.cfg
