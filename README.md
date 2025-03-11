@@ -22,7 +22,6 @@ Use the docker-compose.yml file inside a folder.
 Copy the `.env.example` file to `.env`, containing at least `STEAM_USER` and `STEAM_PASSWORD` (and `STEAMCMDSECRET` if 2fa is required.).
 
 1. Download and extract zip
-2. In the extracted directory, build the image ```docker build -t <image name>```.
 3. Create the container ```docker-compose up -d```
 
 Profiles are saved in `/arma3/configs/profiles`
