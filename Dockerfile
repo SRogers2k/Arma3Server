@@ -67,9 +67,6 @@ STOPSIGNAL SIGINT
 
 COPY *.py /
 
-COPY steamcmd2fa /steamcmd2fa
-RUN chmod +x /steamcmd2fa
-
 WORKDIR /arma3
 
 CMD ["python3","/launch.py"]
