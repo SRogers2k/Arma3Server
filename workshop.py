@@ -11,7 +11,7 @@ USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 
 
 
 def download(mods):
-    steamcmd = ["/steamcmd2fa"]
+    steamcmd = ["/steamcmd2fa/target/debug/steamcmd-2fa"]
     steamcmd.extend(["--path", "/usr/games/steamcmd"])
     steamcmd.extend(["--username", os.environ["STEAM_USER"]])
     steamcmd.extend(["--password", os.environ["STEAM_PASSWORD"]])
@@ -28,12 +28,14 @@ def download(mods):
     # Finally, prep mod directories and files by making them lowercase
     # Workshop files to lowercase and remove spaces
 
-    tolowercase = "find {moddirr} -depth -exec rename 'y/A-Z/a-z/' {} +"
-    removespaces = "find {moddirr} -type f -name '* *' -exec rename 's/ /_/g' {} +"
-    subprocess.run(tolowercase.format("/arma3/steamapps/workshop/content/107410"), shell=True, check=True)
-    subprocess.run(removespaces.format("/arma3/steamapps/workshop/content/107410"), shell=True, check=True)
-    subprocess.run(tolowercase.format(moddirr = "/arma3/mods"), shell=True, check=True)
-    subprocess.run(removespaces.format(moddirr = "/arma3/mods"), shell=True, check=True)
+    tolowercase = "find /arma3/steamapps/workshop/content/107410 -depth -exec rename 'y/A-Z/a-z/' {} +"
+    removespaces = "find /arma3/steamapps/workshop/content/107410 -type f -name '* *' -exec rename 's/ /_/g' {} +"
+    tolowercaselocal = "find /arma3/mods -depth -exec rename 'y/A-Z/a-z/' {} +"
+    removespaceslocal = "find /arma3/mods -type f -name '* *' -exec rename 's/ /_/g' {} +"
+    subprocess.run(tolowercase, shell=True, check=True)
+    subprocess.run(removespaces, shell=True, check=True)
+    subprocess.run(tolowercaselocal, shell=True, check=True)
+    subprocess.run(removespaceslocal, shell=True, check=True)
 
     # ctab is popular but doesn't follow the normal key structure
     source_ctab_dir = '/arma3/steamapps/workshop/content/107410/724582108/@ctab/serverkey'

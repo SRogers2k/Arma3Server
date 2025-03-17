@@ -73,6 +73,8 @@ Not yet implemented
 ### Steam timeouts when downloading workshop items
 Steamcmd has a limitation when downloading large mods. The rule I use: if the mod is >1Gb, install it locally.
 
+### This computer has not been authenticated for your account using Steam Guard.
+
 ## To do
 - Check if Steam2fa works when `STEAMCMDSECRET` is empty (if 2fa is not required).
 - Move mod preset html file to the server (currently local only) mod directory. Then edit code to point to the specific server mod dir to grab html (don't be lazy and just change the env var).

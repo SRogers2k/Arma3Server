@@ -64,7 +64,7 @@ STOPSIGNAL SIGINT
 COPY *.py /
 
 COPY steamcmd2fa /steamcmd2fa
-RUN chmod +x /steamcmd2fa
+RUN chmod +x /steamcmd2fa/target/debug/steamcmd-2fa
 
 WORKDIR /arma3
 
