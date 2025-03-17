@@ -11,7 +11,7 @@ USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 
 
 
 def download(mods):
-    steamcmd = ["/steamcmd2fa/target/debug/steamcmd-2fa"]
+    steamcmd = ["/steamcmd2fa"]
     steamcmd.extend(["--path", "/usr/games/steamcmd"])
     steamcmd.extend(["--username", os.environ["STEAM_USER"]])
     steamcmd.extend(["--password", os.environ["STEAM_PASSWORD"]])

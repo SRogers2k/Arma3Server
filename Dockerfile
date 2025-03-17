@@ -33,7 +33,11 @@ RUN apt-get update \
     && \
     apt-get autoremove -y \
     && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* \
+    && \
+    wget -qO /steamcmd2fa https://github.com/WoozyMasta/steamcmd-2fa/releases/download/0.2.1/steamcmd-2fa \
+    && \
+    chmod +x /steamcmd2fa
 
 ENV ARMA_BINARY=./arma3server
 ENV ARMA_CONFIG=main.cfg
@@ -64,7 +68,7 @@ STOPSIGNAL SIGINT
 COPY *.py /
 
 COPY steamcmd2fa /steamcmd2fa
-RUN chmod +x /steamcmd2fa/target/debug/steamcmd-2fa
+RUN chmod +x /steamcmd2fa
 
 WORKDIR /arma3
 
