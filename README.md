@@ -1,5 +1,7 @@
 # Arma 3 Dedicated Server in Docker with 2FA Steam accounts
 
+# As of early March, Steamcmd-2FA doesn't work using your shared-secret. I don't know why, just check your steamguard phone and approve the login for now. I'm looking into it.
+
 Forked from https://github.com/BrettMayson/Arma3Server
 
 Uses steamcmd-2fa https://github.com/WoozyMasta/steamcmd-2fa
