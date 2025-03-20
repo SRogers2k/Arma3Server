@@ -11,19 +11,28 @@ USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_3) AppleWebKit/537.36 
 
 
 def download(mods):
-    steamcmd = ["/steamcmd2fa"]
-    steamcmd.extend(["--path", "/usr/games/steamcmd"])
-    steamcmd.extend(["--username", os.environ["STEAM_USER"]])
-    steamcmd.extend(["--password", os.environ["STEAM_PASSWORD"]])
-    steamcmd.extend(["--secret", os.environ["STEAMCMDSECRET"]])
-    steamcmd.extend(["-b", "'+force_install_dir /arma3'"])
-    workshopmods = "'"
+    steamcmd = ["/usr/games/steamcmd"]
+    steamcmd.extend(["+force_install_dir", "/arma3"])
+    steamcmd.extend(["+login", os.environ["STEAM_USER"], os.environ["STEAM_PASSWORD"]])
     for id in mods:
-        workshopmods += "+workshop_download_item 107410 " + id + " "
-    workshopmods += "+quit'"
-    steamcmd.extend(["-a", workshopmods])
-    print(steamcmd)
+        steamcmd.extend(["+workshop_download_item", "107410", id])
+    steamcmd.extend(["+quit"])
     subprocess.call(steamcmd)
+
+# def download(mods):
+#     steamcmd = ["/steamcmd2fa"]
+#     steamcmd.extend(["--path", "/usr/games/steamcmd"])
+#     steamcmd.extend(["--username", os.environ["STEAM_USER"]])
+#     steamcmd.extend(["--password", os.environ["STEAM_PASSWORD"]])
+#     steamcmd.extend(["--secret", os.environ["STEAMCMDSECRET"]])
+#     steamcmd.extend(["-b", "'+force_install_dir /arma3'"])
+#     workshopmods = "'"
+#     for id in mods:
+#         workshopmods += "+workshop_download_item 107410 " + id + " "
+#     workshopmods += "+quit'"
+#     steamcmd.extend(["-a", workshopmods])
+#     print(steamcmd)
+#     subprocess.call(steamcmd)
 
     # Finally, prep mod directories and files by making them lowercase
     # Workshop files to lowercase and remove spaces

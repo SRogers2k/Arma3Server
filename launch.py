@@ -29,14 +29,38 @@ if not os.path.isdir(KEYS):
 if os.environ["SKIP_INSTALL"] in ["", "false"]:
     # Install Arma
 
-    steamcmd = ["/steamcmd2fa"]
-    steamcmd.extend(["--path", "/usr/games/steamcmd"])
-    steamcmd.extend(["--username", os.environ["STEAM_USER"]])
-    steamcmd.extend(["--password", os.environ["STEAM_PASSWORD"]])
-    steamcmd.extend(["--secret", os.environ["STEAMCMDSECRET"]])
-    steamcmd.extend(["-b", "'+force_install_dir /arma3'"])
-    steamcmd.extend(["-a", "'+app_update 233780 validate +quit'"])
+    steamcmd = ["/usr/games/steamcmd"]
+    steamcmd.extend(["+force_install_dir", "/arma3"])
+    steamcmd.extend(["+login", os.environ["STEAM_USER"], os.environ["STEAM_PASSWORD"]])
+    steamcmd.extend(["+app_update", "233780"])
+    if env_defined("STEAM_BRANCH"):
+        steamcmd.extend(["-beta", os.environ["STEAM_BRANCH"]])
+    if env_defined("STEAM_BRANCH_PASSWORD"):
+        steamcmd.extend(["-betapassword", os.environ["STEAM_BRANCH_PASSWORD"]])
+    steamcmd.extend(["validate"])
+    if env_defined("STEAM_ADDITIONAL_DEPOT"):
+        for depot in os.environ["STEAM_ADDITIONAL_DEPOT"].split("|"):
+            depot_parts = depot.split(",")
+            steamcmd.extend(
+                ["+login", os.environ["STEAM_USER"], os.environ["STEAM_PASSWORD"]]
+            )
+            steamcmd.extend(
+                ["+download_depot", "233780", depot_parts[0], depot_parts[1]]
+            )
+    steamcmd.extend(["+quit"])
     subprocess.run(steamcmd)
+
+# if os.environ["SKIP_INSTALL"] in ["", "false"]:
+#     # Install Arma
+
+#     steamcmd = ["/steamcmd2fa"]
+#     steamcmd.extend(["--path", "/usr/games/steamcmd"])
+#     steamcmd.extend(["--username", os.environ["STEAM_USER"]])
+#     steamcmd.extend(["--password", os.environ["STEAM_PASSWORD"]])
+#     steamcmd.extend(["--secret", os.environ["STEAMCMDSECRET"]])
+#     steamcmd.extend(["-b", "'+force_install_dir /arma3'"])
+#     steamcmd.extend(["-a", "'+app_update 233780 validate +quit'"])
+#     subprocess.run(steamcmd)
 
 if env_defined("STEAM_ADDITIONAL_DEPOT"):
     for depot in os.environ["STEAM_ADDITIONAL_DEPOT"].split("|"):
