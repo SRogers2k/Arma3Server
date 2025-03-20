@@ -50,18 +50,6 @@ if os.environ["SKIP_INSTALL"] in ["", "false"]:
     steamcmd.extend(["+quit"])
     subprocess.run(steamcmd)
 
-# if os.environ["SKIP_INSTALL"] in ["", "false"]:
-#     # Install Arma
-
-#     steamcmd = ["/steamcmd2fa"]
-#     steamcmd.extend(["--path", "/usr/games/steamcmd"])
-#     steamcmd.extend(["--username", os.environ["STEAM_USER"]])
-#     steamcmd.extend(["--password", os.environ["STEAM_PASSWORD"]])
-#     steamcmd.extend(["--secret", os.environ["STEAMCMDSECRET"]])
-#     steamcmd.extend(["-b", "'+force_install_dir /arma3'"])
-#     steamcmd.extend(["-a", "'+app_update 233780 validate +quit'"])
-#     subprocess.run(steamcmd)
-
 if env_defined("STEAM_ADDITIONAL_DEPOT"):
     for depot in os.environ["STEAM_ADDITIONAL_DEPOT"].split("|"):
         depot_parts = depot.split(",")
