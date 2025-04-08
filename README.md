@@ -80,5 +80,5 @@ Steamcmd has a limitation when downloading large mods. The rule I use: if the mo
 ## To do
 - Check if Steam2fa works when `STEAMCMDSECRET` is empty (if 2fa is not required).
 - Move mod preset html file to the server (currently local only) mod directory. Then edit code to point to the specific server mod dir to grab html (don't be lazy and just change the env var).
-- Add rename for local mods with spaces.
+- Add rename for local mods with spaces. This works but the container does two cycles on first boot due to this...
 - Remove Steamcmd2fa and use wget instead.
