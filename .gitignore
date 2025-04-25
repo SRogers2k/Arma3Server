@@ -6,3 +6,4 @@ mods/*
 armalythmods.html
 *@*
 server_console*.log
+*.log
